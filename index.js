@@ -1,18 +1,33 @@
 const http = require("http");
-const express = require("Express");
-const app = express();
-const port = process.env.PORT || 3000
+const hostname = "localhost";
+const port = 3000;
+const fs = require("fs");
+const server = http.createServer((req,res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html');
+    switch (req.url){
+        case "/home":
+            res.writeHead(200);
+            var data = fs.readFileSync('./Index.html');
+            res.end(data.toString());
+            break;
+        case "/about":
+            res.writeHead(200);
+            var data1 = fs.readFileSync('./About.html');
+            res.end(data1.toString());
+            break;
+        case "/cart":
+            res.writeHead(200);
+            var data2 = fs.readFileSync('./Cart.html');
+            res.end(data2.toString());
+            break;
+        default:
+            res.writeHead(200);
+            res.end("<h1>Easy on me</h1>")
+            break;
+    }
+});
 
-//image source
-app.use('/images', express.static(__dirname + '/images'));
-
-app.get('/', (req,res) => {
-    res.sendFile(__dirname + '/Index.html');
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}`);
 });
-app.get('/about', (req,res) => {
-    res.sendFile(__dirname + '/About.html');
-});
-app.get('/cart', (req,res) => {
-    res.sendFile(__dirname + '/Cart.html');
-});
-app.listen(port, () => console.log('Listening'));
