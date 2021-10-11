@@ -27,30 +27,6 @@ router.get('/cart', (req,res) => {
     res.end(data.toString());
     //res.sendFile(__dirname + '/Cart.html');
 });
-router.get('/product', (req,res) => {
-    res.statusCode = 200;
-    res.setHeader("Content-Type","text/html");
-    res.writeHead(200);
-    var data = fs.readFileSync("./Product.html");
-    res.end(data.toString());
-    //res.sendFile(__dirname + '/Product.html');
-});
-router.get('/signup', (req,res) => {
-    res.statusCode = 200;
-    res.setHeader("Content-Type","text/html");
-    res.writeHead(200);
-    var data = fs.readFileSync("./Signup.html");
-    res.end(data.toString());
-    //res.sendFile(__dirname + '/Signup.html');
-});
-router.get('/login', (req,res) => {
-    res.statusCode = 200;
-    res.setHeader("Content-Type","text/html");
-    res.writeHead(200);
-    var data = fs.readFileSync("./User_login.html");
-    res.end(data.toString());
-    //res.sendFile(__dirname + '/User_login.html');
-});
 router.get('/about', (req,res) => {
     res.statusCode = 200;
     res.setHeader("Content-Type","text/html");
